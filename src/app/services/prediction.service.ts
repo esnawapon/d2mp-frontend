@@ -17,4 +17,8 @@ export class PredictionService {
   predict(params: {}): Observable<PredictionResult> {
     return this.http.post<PredictionResult>(`${BASE_URL}/predict`, params, BASE_HTTP_OPTIONS);
   }
+
+  feedback(params: {}): Observable<any> {
+    return this.http.post<PredictionResult>(`${BASE_URL}/feedback`, params, BASE_HTTP_OPTIONS);
+  }
 }

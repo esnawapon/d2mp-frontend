@@ -5,7 +5,6 @@ import { SelectOption, PredictionResult } from '../types';
 import { FormService, PredictionService } from '../services';
 import { finalize } from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-prediction',
   templateUrl: './prediction.component.html'
@@ -26,7 +25,7 @@ export class PredictionComponent implements OnInit {
   ngOnInit() {
 
     this.form = new FormGroup({
-      mode: new FormControl(1, Validators.required),
+      mode: new FormControl(2, Validators.required),
       hero1: new FormControl(Math.floor(Math.random() * 112) + 1),
       hero2: new FormControl(Math.floor(Math.random() * 112) + 1),
       hero3: new FormControl(Math.floor(Math.random() * 112) + 1),
@@ -97,7 +96,7 @@ export class PredictionComponent implements OnInit {
     this.submitting = true;
     this.form.disable();
     this.scrollToElementId('spinner');
-    this.predictionService.predict(this.predictParams).pipe(
+    this.predictionService.feedback(this.predictParams).pipe(
       finalize(() => {
         this.submitting = false;
         this.form.enable();
