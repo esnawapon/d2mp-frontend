@@ -12,9 +12,9 @@ const routes: Routes = [
   {
     path: 'main',
     component: PredictionComponent,
-    resolve: {
-      server: ServerResolveService
-    }
+    // resolve: {
+    //   server: ServerResolveService
+    // }
   }
 ];
 
