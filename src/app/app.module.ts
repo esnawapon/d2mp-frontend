@@ -9,6 +9,7 @@ import { BlankPageComponent } from './blank-page/blank-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { FormControlErrorComponent } from './utils/form-control-error/form-control-error.component';
 import { PredictionComponent } from './prediction/prediction.component';
+import { HeroPickerComponent } from './hero-picker/hero-picker.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PredictionComponent } from './prediction/prediction.component';
     BlankPageComponent,
     ErrorPageComponent,
     FormControlErrorComponent,
-    PredictionComponent
+    PredictionComponent,
+    HeroPickerComponent
   ],
   imports: [
     BrowserModule,

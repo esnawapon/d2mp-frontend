@@ -1,0 +1,24 @@
+<div class="hero-picker" (click)="activate()">
+  <div *ngIf="!value" class="hero-picker-img-holder"></div>
+  <img *ngIf="value" class="hero-picker-img" [src]="'assets/hero-images/' + value + '.png'">
+  <div class="hero-picker-body">
+    <span class="hero-picker-name">{{value ? getHeroName(value) : 'Select a hero'}}</span>
+  </div>
+</div>
+<div class="hero-picker-choice" *ngIf="open">
+  <h4>STR</h4>
+  <div *ngFor="let option of strOptions" class="hero-picker-choice-option" (click)="select(option)">
+    <img src="assets/hero-images/{{option.value}}.png">
+    <div>{{option.name}}</div>
+  </div>
+  <h4 class="mt-5">AGI</h4>
+  <div *ngFor="let option of agiOptions" class="hero-picker-choice-option" (click)="select(option)">
+    <img src="assets/hero-images/{{option.value}}.png">
+    <div>{{option.name}}</div>
+  </div>
+  <h4 class="mt-5">INT</h4>
+  <div *ngFor="let option of intOptions" class="hero-picker-choice-option" (click)="select(option)">
+    <img src="assets/hero-images/{{option.value}}.png">
+    <div>{{option.name}}</div>
+  </div>
+</div>

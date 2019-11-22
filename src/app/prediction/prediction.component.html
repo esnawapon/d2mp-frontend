@@ -14,16 +14,10 @@
       <div class="card bg-dark text-white">
         <div class="card-header text-center">Your Team</div>
         <div class="card-body">
-          <div class="form-group row" *ngFor="let i of [1, 2, 3, 4, 5]">
-            <label for="hero{{i}}" class="col-form-label col-sm-4">Player {{i}}</label>
-            <div class="col-sm-8">
-              <select id="hero{{i}}" class="form-control" formControlName="hero{{i}}">
-                <option *ngFor="let option of heroOptions" [ngValue]="option.value">{{option.name}}</option>
-              </select>
-              <utils-form-control-error [control]="form.controls['hero' + i]" error="required">This field is required.
-              </utils-form-control-error>
-              <utils-form-control-error [control]="form.controls['hero' + i]" error="duplicated">This hero has already selected.</utils-form-control-error>
-            </div>
+          <div *ngFor="let i of [1, 2, 3, 4, 5]">
+            <app-hero-picker id="hero{{i}}" formControlName="hero{{i}}"></app-hero-picker>
+            <utils-form-control-error [control]="form.controls['hero' + i]" error="required">This field is required.</utils-form-control-error>
+            <utils-form-control-error [control]="form.controls['hero' + i]" error="duplicated">This hero has already selected.</utils-form-control-error>
           </div>
         </div>
       </div>
@@ -32,16 +26,10 @@
       <div class="card bg-dark text-white">
         <div class="card-header text-center">Opponent Team</div>
         <div class="card-body">
-          <div class="form-group row" *ngFor="let i of [6, 7, 8, 9, 10]">
-            <label for="hero{{i}}" class="col-form-label col-sm-4">Player {{i}}</label>
-            <div class="col-sm-8">
-              <select id="hero{{i}}" class="form-control" formControlName="hero{{i}}">
-                <option *ngFor="let option of heroOptions" [ngValue]="option.value">{{option.name}}</option>
-              </select>
-              <utils-form-control-error [control]="form.controls['hero' + i]" error="required">This field is required.
-              </utils-form-control-error>
-              <utils-form-control-error [control]="form.controls['hero' + i]" error="duplicated">This hero has already selected.</utils-form-control-error>
-            </div>
+          <div *ngFor="let i of [6, 7, 8, 9, 10]">
+            <app-hero-picker id="hero{{i}}" formControlName="hero{{i}}"></app-hero-picker>
+            <utils-form-control-error [control]="form.controls['hero' + i]" error="required">This field is required.</utils-form-control-error>
+            <utils-form-control-error [control]="form.controls['hero' + i]" error="duplicated">This hero has already selected.</utils-form-control-error>
           </div>
         </div>
       </div>
