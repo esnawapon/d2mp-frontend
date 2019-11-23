@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import "_variables";
+@import "~bootstrap/scss/bootstrap";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #18181b !important;
+  color: $white;
+}
+
+hr {
+  border-color: $gray-100;
+}
+
+pre {
+  background-color: $gray-600 !important;
+  color: $gray-100;
+}
+
+.form-group-btn {
+  >.btn {
+    margin: 0 $spacer/2;
+    width: $spacer*10;
+  }
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,71 @@
+<form [formGroup]="form" (submit)="onSubmit()" autocomplete="off">
+  <div class="form-group row">
+    <label for="mode" class="col-form-label col-sm-2">Game mode</label>
+    <div class="col-sm-4">
+      <select id="mode" class="form-control" formControlName="mode">
+        <option *ngFor="let option of modeOptions" [ngValue]="option.value">{{option.name}}</option>
+      </select>
+      <utils-form-control-error [control]="form.controls.mode" error="required">This field is required.
+      </utils-form-control-error>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card bg-dark text-white">
+        <div class="card-header text-center">Your Team</div>
+        <div class="card-body">
+          <div *ngFor="let i of [1, 2, 3, 4, 5]">
+            <app-hero-picker id="hero{{i}}" formControlName="hero{{i}}"></app-hero-picker>
+            <utils-form-control-error [control]="form.controls['hero' + i]" error="required">This field is required.</utils-form-control-error>
+            <utils-form-control-error [control]="form.controls['hero' + i]" error="duplicated">This hero has already selected.</utils-form-control-error>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-dark text-white">
+        <div class="card-header text-center">Opponent Team</div>
+        <div class="card-body">
+          <div *ngFor="let i of [6, 7, 8, 9, 10]">
+            <app-hero-picker id="hero{{i}}" formControlName="hero{{i}}"></app-hero-picker>
+            <utils-form-control-error [control]="form.controls['hero' + i]" error="required">This field is required.</utils-form-control-error>
+            <utils-form-control-error [control]="form.controls['hero' + i]" error="duplicated">This hero has already selected.</utils-form-control-error>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-5 mb-5">
+    <button type="submit" class="btn btn-primary">Predict!</button>
+  </div>
+  <h1 id="spinner" *ngIf="submitting" class="text-center">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+  </h1>
+  <div id="result"
+    *ngIf="!!predictionResult"
+    class="card bg-dark text-white text-center"
+    style="width: 500px; margin: auto"
+  >
+    <div class="card-body">
+      <div>You probably</div>
+      <h1
+        [class.text-primary]="predictionResult.win"
+        [class.text-muted]="!predictionResult.win"
+      >
+        {{predictionResult.win ? 'WIN' : 'LOSE'}}
+      </h1>
+      <hr>
+      <div *ngIf="!feedbacked">
+        <small>You can help us improve prediction correctness by submiting real match result</small>
+        <small>Is prediction correct?</small>
+        <div class="mt-5">
+          <button type="button" class="btn btn-sm btn-primary mr-3" (click)="onFeedback(true)">Yes, I {{predictionResult.win ? 'won' : 'lost' }}</button>
+          <button type="button" class="btn btn-sm btn-secondary" (click)="onFeedback(false)">No, I {{!predictionResult.win ? 'won' : 'lost' }}</button>
+        </div>
+      </div>
+      <div *ngIf="feedbacked">
+        Thanks for you feedback
+      </div>
+    </div>
+  </div>
+</form>
