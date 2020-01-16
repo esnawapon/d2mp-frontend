@@ -53,6 +53,12 @@ export class PredictionComponent implements OnInit {
     }
   }
 
+  randomHeroes() {
+    for (let i = 1; i <= 10; i++) {
+      this.form.controls[`hero${i}`].setValue(Math.floor(Math.random() * 112) + 1);
+    }
+  }
+
   scrollToElementId(id) {
     setTimeout(() => {
       const el = document.getElementById(id);
