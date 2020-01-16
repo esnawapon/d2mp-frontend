@@ -6,6 +6,7 @@
   </div>
 </div>
 <div class="hero-picker-choice" *ngIf="open">
+  <div class="pull-right close text-white" (click)="deactivate()">x</div>
   <h4>STR</h4>
   <div *ngFor="let option of strOptions" class="hero-picker-choice-option" (click)="select(option)">
     <img src="assets/hero-images/{{option.value}}.png">
